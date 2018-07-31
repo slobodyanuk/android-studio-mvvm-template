@@ -1,4 +1,4 @@
-package ${packageName}.data;
+package ${packageName}.data.network;
 
 import ${packageName}.data.network.ApiHeaders;
 

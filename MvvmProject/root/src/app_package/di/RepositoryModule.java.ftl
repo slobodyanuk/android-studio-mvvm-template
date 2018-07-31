@@ -1,7 +1,7 @@
 package ${packageName}.di;
 
-import ${packageName}.data.IDataManager;
-import ${packageName}.data.database.Repository;
+import ${packageName}.data.database.IDatabaseManager;
+import ${packageName}.data.database.DatabaseManager;
 import ${packageName}.di.scopes.ApplicationScope;
 
 import dagger.Module;
@@ -12,8 +12,8 @@ public class RepositoryModule {
 
     @Provides
     @ApplicationScope
-    IDataManager provideRepository() {
-        return new Repository();
+    IDatabaseManager provideDatabaseManager() {
+        return new DatabaseManager();
     }
 
 }

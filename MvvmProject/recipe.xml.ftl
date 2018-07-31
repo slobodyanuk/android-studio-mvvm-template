@@ -26,7 +26,8 @@
     <dependency mavenUrl="org.projectlombok:lombok:${lombokVersion}" gradleConfiguration="compileOnly"/>
     <dependency mavenUrl="org.projectlombok:lombok:${lombokVersion}" gradleConfiguration="annotationProcessor"/>
 
-	<#if generateApiHelper><dependency mavenUrl="com.amitshekhar.android:rx2-android-networking:${networkingVersion}"/></#if>
+	<#if generateApiHelper><dependency mavenUrl="com.amitshekhar.android:rx2-android-networking:${networkingVersion}"/><#else>
+    <#if generateRealmHelper><dependency mavenUrl="com.google.code.gson:gson:+"/></#if></#if>
 	<#if useGlide><dependency mavenUrl="com.github.bumptech.glide:glide:${glideVersion}"/></#if>
 	<#if useEventBus><dependency mavenUrl="org.greenrobot:eventbus:${eventBusVersion}"/></#if>
 	<#if usePrefs><dependency mavenUrl="com.pixplicity.easyprefs:library:${prefsVersion}"/></#if>
@@ -115,6 +116,10 @@
 	<#-- Dagger -->
 
     <instantiate 
+        from="root/src/app_package/di/AppDeclarationsModule.java.ftl"
+        to="${escapeXmlAttribute(srcOut)}/di/AppDeclarationModule.java" />
+
+    <instantiate 
      	from="root/src/app_package/di/ActivityBuilder.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/di/ActivityBuilder.java" />
 
@@ -138,6 +143,14 @@
     <instantiate 
      	from="root/src/app_package/di/scopes/FragmentScope.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/di/scopes/FragmentScope.java" />
+
+    <instantiate 
+        from="root/src/app_package/data/IDataManager.java.ftl"
+        to="${escapeXmlAttribute(srcOut)}/data/IDataManager.java" />
+
+    <instantiate 
+        from="root/src/app_package/data/DataManager.java.ftl"
+        to="${escapeXmlAttribute(srcOut)}/data/DataManager.java" />
 
 	<#--/ Dagger -->
 
@@ -200,11 +213,11 @@
 	     	from="root/src/app_package/utils/realm/RealmSerializerFactory.java.ftl"
 	        to="${escapeXmlAttribute(srcOut)}/utils/realm/RealmSerializerFactory.java" />
 	    <instantiate 
-	     	from="root/src/app_package/data/database/Repository.java.ftl"
-	        to="${escapeXmlAttribute(srcOut)}/data/database/Repository.java" />
+	     	from="root/src/app_package/data/database/DatabaseManager.java.ftl"
+	        to="${escapeXmlAttribute(srcOut)}/data/database/DatabaseManager.java" />
 	    <instantiate 
-	     	from="root/src/app_package/data/IDataManager.java.ftl"
-	        to="${escapeXmlAttribute(srcOut)}/data/IDataManager.java" />
+	     	from="root/src/app_package/data/database/IDatabaseManager.java.ftl"
+	        to="${escapeXmlAttribute(srcOut)}/data/database/IDatabaseManager.java" />
 
         <instantiate 
             from="root/src/app_package/di/RepositoryModule.java.ftl"
@@ -241,8 +254,8 @@
 	     	from="root/src/app_package/data/network/ApiHelper.java.ftl"
 	        to="${escapeXmlAttribute(srcOut)}/data/network/ApiHelper.java" />
 	    <instantiate 
-	     	from="root/src/app_package/data/IApiHelper.java.ftl"
-	        to="${escapeXmlAttribute(srcOut)}/data/IApiHelper.java" />
+	     	from="root/src/app_package/data/network/IApiHelper.java.ftl"
+	        to="${escapeXmlAttribute(srcOut)}/data/network/IApiHelper.java" />
 
     </#if>
 

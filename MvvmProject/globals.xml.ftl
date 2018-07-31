@@ -12,7 +12,7 @@
     <#include "root://activities/common/kotlin_globals.xml.ftl" />
 
 	<global id="supportLibraryVersion" type="string"
-		value="28.0.0" />
+		value="+" />
 
 	<global id="constraintLayoutVersion" type="string"
 		value="1.1.2" />

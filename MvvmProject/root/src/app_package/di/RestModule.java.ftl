@@ -2,7 +2,7 @@ package ${packageName}.di;
 
 import com.androidnetworking.gsonparserfactory.GsonParserFactory;
 
-import ${packageName}.data.IApiHelper;
+import ${packageName}.data.network.IApiHelper;
 import ${packageName}.data.IDataManager;
 import ${packageName}.data.network.ApiHeaders;
 import ${packageName}.data.network.ApiHelper;
