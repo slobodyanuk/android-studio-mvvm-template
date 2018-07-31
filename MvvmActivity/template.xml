@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="MVVM Activity"
+    minApi="19"
+    minBuildApi="19"
+    description="Create a new MVVM Activity">
+
+    <category value="MVVM" />
+    <formfactor value="Mobile" />
+    
+    <parameter
+        id="activityClass"
+        name="Activity name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MainActivity"
+        suggest="${layoutToActivity(layoutName)}"
+        visibility="true"
+        help="The name of the Activity to create" />
+
+    <parameter
+        id="suffix"
+        name="suffix"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="Main"
+        visibility="false"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}"
+        help="The name suffix  of the activity to create" />
+
+    <parameter
+        id="layoutName"
+        name="Layout name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="activity_main"
+        visibility="true"
+        suggest="${activityToLayout(activityClass)}"
+        help="The name of the layout to create" />
+
+    <parameter
+        id="isLauncher"
+        name="Launcher?"
+        type="boolean"
+        default="false"
+        visibility="true"/>
+
+    <thumbs>
+        <thumb>mvvm_activity_logo.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="MVVM Project"
+    minApi="19"
+    minBuildApi="19"
+    description="Creates a new MVVM Project">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+    
+    <parameter
+        id="applicationName"
+        name="Application Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MyApplication"
+        visibility="true"
+        help="The name of the Application to create" />
+
+    <parameter
+        id="generateApiHelper"
+        name="Generate Api Helper"
+        type="boolean"
+        default="true"
+        help="If true, a file will be generated" />
+
+    <parameter
+        id="generateRealmHelper"
+        name="Generate Realm classes"
+        type="boolean"
+        default="true"
+        help="If true, a realm will be generated" />
+
+    <parameter
+        id="withRecycler"
+        name="With recycler view"
+        type="boolean"
+        default="true"
+        help="If true, a recycler view classes will be generated" />  
+
+    <parameter
+        id="usePrefs"
+        name="Use Prefs library"
+        type="boolean"
+        default="true"
+        help="If true, a Prefs will be enabled" />
+
+    <parameter
+        id="useEventBus"
+        name="Use EventBus library"
+        type="boolean"
+        default="true"
+        help="If true, a EventBus will be enabled" />
+
+    <parameter
+        id="useGlide"
+        name="Use Glide library"
+        type="boolean"
+        default="true"
+        help="If true, a Glide will be enabled" />  
+
+<!--     <parameter
+        id="generateSplashScreen"
+        name="Generate splash screen"
+        type="boolean"
+        default="true"
+        help="If true, a splash will be generated" />
+
+    <parameter
+        id="generateLoginScreen"
+        name="Generate login screen"
+        type="boolean"
+        default="true"
+        help="If true, a login will be generated" /> -->
+
+    <parameter
+        id="generateBackstackTool"
+        name="Generate custom fragment backstack"
+        type="boolean"
+        default="true"
+        help="If true, a backstack tool will be generated" />
+
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>logo.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

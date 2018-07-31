@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="MVVM Fragment"
+    minApi="19"
+    minBuildApi="19"
+    description="Create a new MVVM Fragment">
+
+    <category value="MVVM" />
+    <formfactor value="Mobile" />
+    
+    <parameter
+        id="fragmentClass"
+        name="Fragment name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MainFragment"
+        suggest="${classToResource(layoutName)}"
+        visibility="true"
+        help="The name of the Fragment to create" />
+
+    <parameter
+        id="suffix"
+        name="suffix"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="Main"
+        visibility="false"
+        suggest="${underscoreToCamelCase(classToResource(fragmentClass))}"
+        help="The name suffix  of the fragment to create" />
+
+    <parameter
+        id="layoutName"
+        name="Layout name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="fragment_main"
+        visibility="true"
+        suggest="fragment_${classToResource(fragmentClass)}"
+        help="The name of the layout to create" />
+
+    <thumbs>
+        <thumb>mvvm_fragment_logo.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="MVVM List Adapter"
+    minApi="19"
+    minBuildApi="19"
+    category="Activity"
+    description="Create a new MVVM List Adapter class with view holder">
+
+    <category value="MVVM" />
+    <formfactor value="Mobile" />
+    
+
+    <parameter
+        id="adapterClass"
+        name="Adapter class"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MainAdapter"
+        visibility="true"
+        help="The name of the Adapter to create" />
+
+    <parameter
+        id="dataClass"
+        name="Entity class (must exist)"
+        type="string"
+        constraints="class"
+        default=""
+        help="Example: 'Item', 'Book', etc" />
+
+    <parameter
+        id="dataName"
+        name="Name of list entities"
+        type="string"
+        constraints="nonempty"
+        visibility="true"
+        default="items"
+        help="Name of the existing data object list inside adapter" />
+
+    <parameter
+        id="suffix"
+        name="suffix"
+        type="string"
+        constraints="nonempty"
+        suggest="${adapterClass?replace('Adapter|adapter', '', 'r')}"
+        default="Main"
+        visibility="false"/>
+
+    <parameter
+        id="layoutName"
+        name="Item layout name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="item_holder_main"
+        visibility="true"
+        suggest="item_holder_${camelCaseToUnderscore(suffix)}"
+        help="The name of the layout to create" />
+
+    <thumbs>
+        <thumb>templates_list_logo.png</thumb>
+    </thumbs>
+    <globals file="globals.xml.ftl" />
+
+    <execute file="recipe.xml.ftl" />
+
+</template>
